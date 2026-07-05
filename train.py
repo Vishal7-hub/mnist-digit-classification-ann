@@ -4,10 +4,15 @@ from tensorflow.keras.layers import Dense, Flatten, Input
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
 
-# Load dataset
+
+# Load Dataset
+
+
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-# Normalize images
+# Data Preprocessing
+
+# Normalize pixel values
 x_train = x_train / 255.0
 x_test = x_test / 255.0
 
@@ -15,7 +20,8 @@ x_test = x_test / 255.0
 y_train = to_categorical(y_train, 10)
 y_test = to_categorical(y_test, 10)
 
-# Build model
+# Build ANN Model
+
 model = Sequential([
     Input(shape=(28, 28)),
     Flatten(),
@@ -23,22 +29,41 @@ model = Sequential([
     Dense(10, activation="softmax")
 ])
 
-# Compile model
+# Compile Model
+
 model.compile(
     optimizer="adam",
     loss="categorical_crossentropy",
     metrics=["accuracy"]
 )
 
-# Train model
-model.fit(
+# Display model architecture
+model.summary()
+
+
+# Train Model
+
+history = model.fit(
     x_train,
     y_train,
+    validation_split=0.2,
     epochs=5,
-    batch_size=32
+    batch_size=32,
+    verbose=1
 )
 
-# Evaluate model
-loss, accuracy = model.evaluate(x_test, y_test)
+# Evaluate Model
 
-print(f"Test Accuracy: {accuracy:.4f}")
+loss, accuracy = model.evaluate(
+    x_test,
+    y_test,
+    verbose=0
+)
+
+print(f"\nTest Accuracy : {accuracy:.4f}")
+print(f"Test Loss     : {loss:.4f}")
+
+# Save Trained Model
+
+model.save("model.keras")
+print("\nModel saved successfully as 'model.keras'")
