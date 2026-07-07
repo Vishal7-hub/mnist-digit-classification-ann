@@ -1,4 +1,5 @@
 import tensorflow as tf
+import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten, Input
 from tensorflow.keras.datasets import mnist
@@ -52,6 +53,10 @@ history = model.fit(
     verbose=1
 )
 
+print(history.history.keys())
+print(history.history["accuracy"])
+print(history.history["val_accuracy"])
+
 # Evaluate Model
 
 loss, accuracy = model.evaluate(
@@ -67,3 +72,44 @@ print(f"Test Loss     : {loss:.4f}")
 
 model.save("model.keras")
 print("\nModel saved successfully as 'model.keras'")
+
+
+
+# Visualize Training Accuracy
+
+epochs = range(1, len(history.history["accuracy"]) + 1)
+
+plt.figure(figsize=(8, 5))
+
+plt.plot(
+    epochs,
+    history.history["accuracy"],
+    marker="o",
+    linewidth=2,
+    label="Training Accuracy"
+)
+
+plt.plot(
+    epochs,
+    history.history["val_accuracy"],
+    marker="s",
+    linewidth=2,
+    label="Validation Accuracy"
+)
+
+plt.title("Training vs Validation Accuracy")
+plt.xlabel("Epoch")
+plt.ylabel("Accuracy")
+
+plt.xticks(epochs)
+plt.ylim(0.90, 1.00)
+
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
+
+plt.savefig("images/training_accuracy.png", dpi=300)
+
+plt.show()
+plt.close()
