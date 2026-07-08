@@ -113,3 +113,46 @@ plt.savefig("images/training_accuracy.png", dpi=300)
 
 plt.show()
 plt.close()
+
+
+
+# Visualize Training Loss
+
+
+plt.figure(figsize=(8, 5))
+
+plt.plot(
+    epochs,
+    history.history["loss"],
+    marker="o",
+    linewidth=2,
+    label="Training Loss"
+)
+
+plt.plot(
+    epochs,
+    history.history["val_loss"],
+    marker="s",
+    linewidth=2,
+    label="Validation Loss"
+)
+
+plt.title("Training vs Validation Loss")
+plt.xlabel("Epoch")
+plt.ylabel("Loss")
+
+plt.xticks(epochs)
+
+plt.grid(True)
+plt.legend(loc="best")
+
+plt.tight_layout()
+
+plt.savefig(
+    "images/training_loss.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.show()
+plt.close()
