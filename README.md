@@ -21,18 +21,18 @@ Rather than focusing only on achieving high accuracy, this project emphasizes cl
 
 #  Features
 
-- ✅ MNIST dataset preprocessing
-- ✅ Image normalization
-- ✅ One-hot encoding of labels
-- ✅ Artificial Neural Network (ANN) implementation
-- ✅ Model training with validation split
-- ✅ Performance evaluation on unseen test data
-- ✅ Model persistence using TensorFlow
-- ✅ Training & Validation Accuracy visualization
-- ✅ Training & Validation Loss visualization
-- ✅ Random digit prediction using saved model
-- ✅ Clean project structure
-- ✅ Version-controlled development using Git
+-  MNIST dataset preprocessing
+-  Image normalization
+-  One-hot encoding of labels
+-  Artificial Neural Network (ANN) implementation
+-  Model training with validation split
+-  Performance evaluation on unseen test data
+-  Model persistence using TensorFlow
+-  Training & Validation Accuracy visualization
+-  Training & Validation Loss visualization
+-  Random digit prediction using saved model
+-  Clean project structure
+-  Version-controlled development using Git
 
 ---
 
