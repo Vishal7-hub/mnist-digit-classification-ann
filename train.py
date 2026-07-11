@@ -70,7 +70,7 @@ print(f"Test Loss     : {loss:.4f}")
 
 # Save Trained Model
 
-model.save("model.keras")
+model.save("models/model.keras")
 print("\nModel saved successfully as 'model.keras'")
 
 

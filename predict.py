@@ -5,7 +5,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.datasets import mnist
 
-model = tf.keras.models.load_model("model.keras")
+model = tf.keras.models.load_model("models/model.keras")
 
 (_, _), (x_test, y_test) = mnist.load_data()
 x_test = x_test / 255.0
